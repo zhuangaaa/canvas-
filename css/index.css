@@ -1,0 +1,492 @@
+@charset "utf-8";
+/* CSS Document */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+ul,
+li,
+a {
+  list-style: none;
+}
+.canvas {
+  background: #eee;
+}
+body {
+  overflow: hidden;
+}
+#left {
+  width: 60px;
+  float: left;
+  background: -moz-linear-gradient(
+    left,
+    #595758,
+    #3a393a
+  ) !important; /* FF3.6+ */
+  background: -webkit-gradient(
+    linear,
+    top left,
+    top right,
+    color-stop(#595758),
+    color-stop(#3a393a)
+  ) !important; /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(
+    left,
+    #595758,
+    #3a393a
+  ) !important; /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(
+    left,
+    #595758,
+    #3a393a
+  ) !important; /* Opera 11.10+ */
+  background: linear-gradient(left, #595758, #3a393a) !important;
+  background: #595758;
+}
+#left li {
+  width: 60px;
+  height: 60px;
+}
+#left li span,
+#left li input,
+.list input {
+  display: block;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  border: 0;
+}
+#left li span.hide,
+#left li input.hide,
+.list input.hide {
+  display: none;
+}
+.list input {
+  border: 2px solid #565b63;
+  width: 48px;
+  height: 48px;
+  margin: 0 4px 10px 4px;
+  border-radius: 5px;
+}
+.list input.hover {
+  border-color: #ff6600;
+}
+#left li.current {
+  background: #eee;
+}
+#left li span.BlockPen {
+  background: url(../images/BlockPenHover.png) center center no-repeat;
+}
+#left li span.RedPen {
+  background: url(../images/RedPenHover.png) center center no-repeat;
+}
+#left li span.GreenPen {
+  background: url(../images/GreenPenHover.png) center center no-repeat;
+}
+#left li span.Tools {
+  background: url(../images/tools.png) center center no-repeat;
+}
+#left li span.help {
+  background: url(../images/help.png) center center no-repeat;
+}
+#left li input.Clear {
+  background: url(../images/ClearHover.png) center center no-repeat;
+}
+#left li input.Eraser {
+  background: url(../images/EraserHover.png) center center no-repeat;
+}
+#left li input.Add {
+  background: url(../images/AddHover.png) center center no-repeat;
+}
+#left li input.Prev {
+  background: url(../images/PrevHover.png) center center no-repeat;
+}
+#left li input.Next {
+  background: url(../images/NextHover.png) center center no-repeat;
+}
+#left li input.up {
+  background: url(../images/up.png) center center no-repeat;
+}
+#left li span.OK {
+  background: url(../images/OKHover.png) center center no-repeat;
+}
+#left li input.Message {
+  background: url(../images/Message.png) center center no-repeat;
+}
+#left li input.restar {
+  background: url(../images/restar.png) center center no-repeat;
+}
+#left li input.beginBox {
+  background: url(../images/Begin.png) center center no-repeat;
+}
+#left li input.pauseBox {
+  background: url(../images/PauseHoverCanvas.png) center center no-repeat;
+}
+#left li input.overBox {
+  background: url(../images/OKHover.png) center center no-repeat;
+}
+#left li input.Look {
+  background: url(../images/LookHover.png) center center no-repeat;
+}
+.list input.BlockPen {
+  background: url(../images/BlockPen.png) center center no-repeat;
+  top: 0px;
+  left: 130px;
+}
+.list input.RedPen {
+  background: url(../images/RedPen.png) center center no-repeat;
+  top: 50px;
+  left: 25px;
+}
+.list input.GreenPen {
+  background: url(../images/GreenPen.png) center center no-repeat;
+  top: 135px;
+  left: 0px;
+}
+.list input#NormalPen {
+  background: url(../images/NormalPen.png) center center no-repeat;
+  top: 220px;
+  left: 20px;
+}
+.list input#MiddlePen {
+  background: url(../images/MiddlePen.png) center center no-repeat;
+  top: 270px;
+  left: 80px;
+}
+.list input#WeightPen {
+  background: url(../images/WeightPen.png) center center no-repeat;
+  top: 270px;
+  right: 80px;
+}
+.list input.Eraser {
+  background: url(../images/Eraser.png) center center no-repeat;
+  top: 220px;
+  right: 20px;
+}
+.list input.Clear {
+  background: url(../images/Clear.png) center center no-repeat;
+  top: 135px;
+  right: 0px;
+}
+.list input.Add {
+  background: url(../images/Add.png) center center no-repeat;
+  top: 50px;
+  right: 25px;
+}
+.list input.Prev {
+  background: url(../images/Prev.png) center center no-repeat;
+}
+.list input.Next {
+  background: url(../images/Next.png) center center no-repeat;
+}
+.list {
+  position: absolute;
+  display: none;
+  left: 60px;
+  z-index: 10;
+  width: 320px;
+  height: 320px;
+  background: url(../images/tools_bg.png) no-repeat center center;
+}
+.pens {
+  top: 0;
+  width: 180px;
+}
+.clears {
+  width: 120px;
+}
+.list input {
+  position: absolute;
+}
+#box {
+  float: left;
+  width: 640px;
+}
+.pageDiv {
+  position: absolute;
+  font-size: 20px;
+  width: 100px;
+  bottom: 10px;
+  right: 10px;
+}
+.pageDiv .currentPage {
+  color: red;
+  font-weight: bold;
+}
+.imglist {
+  position: absolute;
+  width: auto;
+  left: 60px;
+}
+.imglist li {
+  float: left;
+  cursor: pointer;
+  padding: 0 5px;
+}
+#bgdiv {
+  background: #000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  z-index: 100;
+  opacity: 0.75;
+  *filter: alpha(opacity=75);
+}
+#bgImg em {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1002;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background: url(../images/close.png) no-repeat;
+  cursor: pointer;
+}
+#bgCeng {
+  opacity: 0.6;
+  *filter: alpha(opacity=60);
+  background: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 300;
+  display: none;
+}
+#bigImg {
+  position: fixed;
+  z-index: 302;
+  display: block;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  vertical-align: middle;
+  display: none;
+}
+.xszd {
+  position: fixed;
+  z-index: 302;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.pointer {
+  position: fixed;
+  z-index: 303;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  display: none;
+}
+.xszd div {
+  position: absolute;
+  display: none;
+}
+.xszd_list {
+  position: absolute;
+  left: 60px;
+  z-index: 10;
+  width: 320px;
+  height: 320px;
+}
+.xszd_list {
+  position: absolute;
+  display: inline-block;
+  left: 60px;
+  z-index: 10;
+  width: 320px;
+  height: 320px;
+}
+#step1 {
+  top: 5px;
+  left: 7px;
+  background: url(../images/step1.png) no-repeat;
+  width: 227px;
+  height: 120px;
+}
+#step2 {
+  top: 0px;
+  left: 65px;
+  background: url(../images/step_img.png) no-repeat;
+  width: 206px;
+  height: 235px;
+}
+#step3 {
+  top: 63px;
+  left: 5px;
+  background: url(../images/step2.png) no-repeat;
+  width: 280px;
+  height: 162px;
+}
+#step4 {
+  top: 0px;
+  left: 134px;
+  background: url(../images/step_block.png) no-repeat;
+  width: 147px;
+  height: 51px;
+}
+#step5 {
+  top: 50px;
+  left: 29px;
+  background: url(../images/step_red.png) no-repeat;
+  width: 149px;
+  height: 50px;
+}
+#step6 {
+  top: 135px;
+  left: 4px;
+  background: url(../images/step_green.png) no-repeat;
+  width: 150px;
+  height: 52px;
+}
+#step7 {
+  top: 220px;
+  left: 24px;
+  background: url(../images/step_normal.png) no-repeat;
+  width: 170px;
+  height: 70px;
+}
+#step8 {
+  top: 270px;
+  left: 84px;
+  background: url(../images/step_middle.png) no-repeat;
+  width: 199px;
+  height: 91px;
+}
+#step9 {
+  top: 270px;
+  left: 66px;
+  background: url(../images/step_weight.png) no-repeat;
+  width: 169px;
+  height: 48px;
+}
+#step10 {
+  top: 220px;
+  left: 126px;
+  background: url(../images/step_eraser.png) no-repeat;
+  width: 169px;
+  height: 79px;
+}
+#step11 {
+  top: 133px;
+  left: 168px;
+  background: url(../images/step_clear.png) no-repeat;
+  width: 147px;
+  height: 49px;
+}
+#step12 {
+  top: 48px;
+  left: 66px;
+  background: url(../images/step_add.png) no-repeat;
+  width: 224px;
+  height: 83px;
+}
+#step13 {
+  top: 123px;
+  left: 5px;
+  background: url(../images/step9.png) no-repeat;
+  width: 230px;
+  height: 112px;
+}
+/*#step14{top:183px; left:5px;background:url(../images/step3.png) no-repeat; width:336px; height:123px;}
+#step15{top:243px; left:5px;background:url(../images/step4.png) no-repeat; width:308px; height:81px;}*/
+#step14 {
+  top: 123px;
+  left: 5px;
+  background: url(../images/step3.png) no-repeat;
+  width: 336px;
+  height: 123px;
+}
+#step15 {
+  top: 183px;
+  left: 5px;
+  background: url(../images/step4.png) no-repeat;
+  width: 308px;
+  height: 81px;
+}
+#step16 {
+  top: 3px;
+  left: 5px;
+  background: url(../images/step_purse.png) no-repeat;
+  width: 293px;
+  height: 142px;
+}
+#step17 {
+  top: 63px;
+  left: 5px;
+  background: url(../images/step5.png) no-repeat;
+  width: 341px;
+  height: 139px;
+}
+#step18 {
+  top: 3px;
+  left: 5px;
+  background: url(../images/step6.png) no-repeat;
+  width: 275px;
+  height: 136px;
+}
+#step19 {
+  top: 63px;
+  left: 5px;
+  background: url(../images/step7.png) no-repeat;
+  width: 303px;
+  height: 124px;
+}
+#step20 {
+  top: 123px;
+  left: 5px;
+  background: url(../images/step8.png) no-repeat;
+  width: 245px;
+  height: 114px;
+}
+#step21 {
+  left: 5px;
+  bottom: 0;
+  background: url(../images/step10.png) no-repeat;
+  width: 350px;
+  height: 99px;
+}
+.hide {
+  display: none;
+}
+.luzhiTime {
+  position: absolute;
+  text-shadow: 0 0 1px #fff;
+  display: none;
+}
+.luzhiTime span {
+  color: red;
+  font-weight: bold;
+}

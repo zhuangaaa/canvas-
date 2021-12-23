@@ -1,0 +1,234 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>录制页面</title>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<script type="text/javascript" src="js/jquery-1.7.js"></script>
+	<script type="text/javascript">
+		var abc = 0, pagePerson = 1, beginDraw = 0, strs = "", pers = 0, hourAll = 0, hour1 = new Array(), hour2 = new Array(), hourAt = new Array(), questionMs = new Array(), ImgUrl = "", DataURL = "", a = 0, DataUrlNum = 0, addCanvasNum = 1, firstTime = 0, pointer = 1, ImgUrl = "", questionText = "", ex = 0, pauseNum = 0, audioSrc = "", checkQuestion = 0, u, hourAll = 0, hourAllList = [];
+		hour1[0] = 0;
+		var imgWidth = 0, imgHeight = 0, getServiceTime = 0, getStime;
+		//全屏画布添加的变量
+		var _px = 1, _py = 1, _canvasWidth = 740, _canvasHeight = 480, _pageWx = 740, _pageHx = 480;
+	</script>
+</head>
+
+<body>
+	<div id="warp">
+		<div id="left" class="fl">
+			<ul>
+				<li class="li_luzhi">
+					<input id="time_begin" type="button" title="开始讲课！" class="beginBox">
+					<input id="pauseBox" type="button" title="暂停" class="pauseBox hide">
+				</li>
+				<li class="li_over hide"><input id="begin" type="button" title="结束讲课" class="overBox" /></li>
+				<li class="li_look hide"><input id="lookBox" type="button" title="预览" class="Look"></li>
+				<li class="li_restar hide"><input id="restar" type="button" title="重新录制" class="restar"></li>
+				<li class="li_up hide"><input id="upBox" type="button" title="上传" class="up"></li>
+				<li class="li_tool hide"><span class="Tools">&nbsp;</span></li>
+				<li class="li_Message hide"><input id="Message" type="button" title="输入文字" class="Message"></li>
+				<li class="up hide"><input id="upPage" type="button" title="上一页" class="Prev" /></li>
+				<li class="down hide"><input id="downPage" type="button" title="下一页" class="Next" /></li>
+				<li class="bottomList" style="position:absolute;bottom:0px;"><span class="help">&nbsp;</span></li>
+			</ul>
+		</div>
+		<div class="list">
+			<span id="color">
+				<input class="BlockPen hover" type="button" title="黑色" />
+				<input class="RedPen" type="button" title="红色" />
+				<input class="GreenPen" type="button" title="绿色" />
+			</span>
+			<span id="font">
+				<input type="button" id="NormalPen" class="hover" title="细" />
+				<input type="button" id="MiddlePen" title="中" />
+				<input type="button" id="WeightPen" title="粗" />
+			</span>
+			<input id="eraser" class="Eraser" type="button" title="橡皮擦" />
+			<input id="clear" type="button" title="清除画布" class="Clear" />
+			<input id="addCanvas" type="button" title="添加画布" class="Add" />
+		</div>
+		<div id="box" class="fl">
+			<div id="play_canvas">
+				<canvas id="canvas0" class="canvas" width="740" height="480" style="top:0;">您的浏览器不支持 canvas 标签 </canvas>
+				<canvas id="canvas1" class="canvas hide" width="740" height="480" style="top:0;">您的浏览器不支持 canvas 标签 </canvas>
+				<canvas id="canvas2" class="canvas hide" width="740" height="480" style="top:0;">您的浏览器不支持 canvas 标签 </canvas>
+				<canvas id="canvas3" class="canvas hide" width="740" height="480" style="top:0;">您的浏览器不支持 canvas 标签 </canvas>
+				<canvas id="canvas4" class="canvas hide" width="740" height="480" style="top:0;">您的浏览器不支持 canvas 标签 </canvas>
+				<canvas id="canvas5" class="canvas hide" width="740" height="480" style="top:0;">您的浏览器不支持 canvas 标签 </canvas>
+				<canvas id="canvas6" class="canvas hide" width="740" height="480" style="top:0;">您的浏览器不支持 canvas 标签 </canvas>
+				<canvas id="canvas7" class="canvas hide" width="740" height="480" style="top:0;">您的浏览器不支持 canvas 标签 </canvas>
+				<canvas id="canvas8" class="canvas hide" width="740" height="480" style="top:0;">您的浏览器不支持 canvas 标签 </canvas>
+				<canvas id="canvas9" class="canvas hide" width="740" height="480" style="top:0;">您的浏览器不支持 canvas 标签 </canvas>
+			</div>
+		</div>
+		<div class="pageDiv"><span class="currentPage">1</span> / <span class="totalPage">1</span></div>
+		<div class="imglist">
+			<ul>
+				<li style="display:none"><img src="images/1.jpg" /></li>
+				<li style="display:none"><img src="images/1.jpg" /></li>
+				<li style="display:none"><img src="images/1.jpg" /></li>
+			</ul>
+		</div>
+	</div>
+	<span id="error"></span>
+	<span id="error1"></span>
+	<div style="clear:both"></div>
+	<div id="bgCeng"></div>
+	<img src="" id="bigImg" />
+	<div class="xszd">
+		<div id="step1"></div>
+		<div id="step2"></div>
+		<div id="step3"></div>
+		<span class="xszd_list">
+			<div id="step4"></div>
+			<div id="step5"></div>
+			<div id="step6"></div>
+			<div id="step7"></div>
+			<div id="step8"></div>
+			<div id="step9"></div>
+			<div id="step10"></div>
+			<div id="step11"></div>
+			<div id="step12"></div>
+		</span>
+		<div id="step13"></div>
+		<div id="step14"></div>
+		<div id="step15"></div>
+		<div id="step16"></div>
+		<div id="step17"></div>
+		<div id="step18"></div>
+		<div id="step19"></div>
+		<div id="step20"></div>
+		<div id="step21" style="position:absolute;bottom:0px;"></div>
+	</div>
+	<div class="pointer"></div>
+	<script type="text/javascript" language="javascript" src="js/canves.js"></script>
+	<script type="text/javascript" language="javascript" src="js/index.js"></script>
+	<script>
+		try {
+
+			ImgUrl = window.Record.getImgUrls();
+			if (ImgUrl == "=" || ImgUrl == undefined) { ImgUrl = "" }
+			firstTime = window.Record.isFirstOpen();
+			questionText = window.Record.getTextContent();
+			if (questionText == "" || questionText == undefined) { questionText = ""; }
+
+		} catch (e) { }
+		$(function () {
+			document.body.addEventListener('touchmove', function (event) {
+				// event.preventDefault();
+			}, false);
+			onLoadPage();
+			$.paint.init(pagePerson, 0);
+			imgOnLoad();
+			if (firstTime == 0) {
+				$("#bgCeng").show();
+				$(".pointer").show();
+				$(".xszd").show();
+				$("#step1").show();
+			}
+		});
+		$(window).resize(function () {
+			onLoadPage();
+		});
+		function restar() {
+			$("li.li_look").addClass("hide");
+			$("li.li_up").addClass("hide");
+			$("li.up").addClass("hide");
+			$("li.down").addClass("hide");
+			$("li.li_restar").addClass("hide");
+			$("li.li_luzhi").removeClass("hide");
+			pers = 0;
+			hour.length = 0;
+			hour1.length = 1;
+			hour2.length = 0;
+			canvasEach();
+			$.paint.init(1, 0);
+			addCanvasNum = 1;
+			imgOnLoad();
+			$(".currentPage").text(1);
+			$(".totalPage").text(1);
+			strs = "";
+			//window.Record.startRecord();		
+		};
+		function canvasEach() {
+			var inde = 0;
+			$(".canvas").each(function () {
+				var cla = $(this).attr("class");
+				if (cla == "canvas") {
+					inde = $(this).index();
+					$(this).addClass("hide");
+				}
+			})
+			$(".canvas").eq(0).removeClass("hide");
+			//清除画布
+			for (var i = 0; i <= inde; i++) {
+				var canvas_begin = document.getElementById("canvas" + i);
+				var ctx_begin = canvas_begin.getContext("2d");
+				ctx_begin.clearRect(0, 0, canvas_begin.width, canvas_begin.height);
+			}
+		};
+		function TextM() {
+			//window.Record.onEditMessage();
+		};
+		//结束讲课
+		function ends() {
+			beginDraw = 0;
+			var _h = hour1[pers] - hourAll - hour2[0];
+			strs = strs.substring(0, strs.length - 2);
+			var txt = strs.split("|")[strs.split("|").length - 1].split(",");
+			txt.splice(2, 1, _h);
+			txt = "|=" + txt + "|=&" + $(".totalPage").text() + "," + _canvasWidth + "," + _canvasHeight + "," + _pageWx + "," + _pageHx;
+			strs = strs + txt;
+			$("li.li_luzhi").addClass("hide");
+			$("li.li_look").removeClass("hide");
+			$("li.li_up").removeClass("hide");
+			$("li.li_over").addClass("hide");
+			$("li.li_restar").removeClass("hide");
+			$("li.up").hide();
+			$("li.down").hide();
+			var th = addCanvasNum - 1;
+			var mycanvas = document.getElementById("canvas" + th);
+			var cxt = mycanvas.getContext("2d");
+			DataURL = mycanvas.toDataURL("image/png");
+			//window.Record.stopRecord();	
+		};
+		//上传，将结果传到服务器
+		function upBox() {
+			beginDraw = 0;
+			//Record.finishRecordToUpload(DataURL,strs);
+		};
+		function begin() {
+			//开始录制
+			beginDraw = 1;
+			$(".luzhiTime").show();
+			hour2[pers] = getTimes();
+			hourAllList.push(pers);
+			if (pers != 0 && hourAllList[hourAllList.length - 1] != hourAllList[hourAllList.length - 2]) {
+				hourAll += hour2[pers] - hour1[pers];
+			}
+			if (pers == 0)
+				strs = "0,0,0,#000,5,0,0,0,0,1|=";
+			//window.Record.startRecord();//开始录音		
+		};
+		function lookBox() {
+			//$("#error").text(strs)
+			//播放预览，结束播放并跳转到播放页面
+			beginDraw = 0;
+			hour1[pers] = getTimes();
+			//Record.sendMovelist(strs);
+			window.open("play.html?file=" + strs);
+		};
+		function pauseBox() {
+			//暂停录制	
+			beginDraw = 0;
+			hour1[pers] = getTimes();
+			//window.Record.pauseRecord();		
+		};
+	</script>
+</body>
+
+</html>

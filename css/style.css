@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+#canvas,
+#canvas_begin,
+#canvas_android {
+  background: #fff;
+  cursor: default;
+  display: inline-block;
+}
+/*
+#box{ position:relative; top:0; left:0;box-shadow:0 0 10px #ccc; height:auto; overflow:hidden; float:left;}
+#canvas{position:absolute; top:0; left:0;}
+.play_options,.small_btns,.other_btns{ border-top:1px solid #ccc;}
+.fl{ float:left;}
+.fr{ float:right;}
+.btns input,.other_btns input{ width:45%; margin:10px 2%; cursor:pointer;}
+.other_btns input{ width:30%;}
+.clear{ clear:both;}
+.small_btns input{ width:14%; float:left; margin:8px 1%;cursor:pointer;border:2px solid #fff; border-radius:3px;}
+.small_btns input.current{ border-color:blue;}
+#color input{ height:25px; line-height:25px;}
+#color input.i1{background:#000000;}
+#color input.i2{background:#FF0000;}
+#color input.i3{background:#80FF00;}
+.small_btns #font input.current{ background:#ccc;}
+*/
